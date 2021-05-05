@@ -1,14 +1,20 @@
-﻿CREATE TABLE [dbo].[Utilisateur] (
-    [idUtilisateur]        INT          IDENTITY (1, 1) NOT NULL,
+﻿
+drop table utilisateur;
+drop table UtilisateurThematique;
+drop table Thematique;
+drop table publication
+
+CREATE TABLE [dbo].[Personne] (
+    [idPersonne]        INT          IDENTITY (1, 1) NOT NULL,
     [nom]       VARCHAR (50) NOT NULL,
     [prenom]    VARCHAR (50) NOT NULL,
     [email] VARCHAR (50) NOT NULL,
     [mdp] VARCHAR (50) NOT NULL,
     [role] VARCHAR (50) NOT NULL,
-    PRIMARY KEY CLUSTERED ([idUtilisateur] ASC)
+    PRIMARY KEY CLUSTERED ([idPersonne] ASC)
 );
 
-CREATE TABLE [dbo].[UtilisateurThematique] (
+CREATE TABLE [dbo].[PersonneThematique] (
     [IdUT]       INT IDENTITY (1, 1) NOT NULL,
     [idUtilisateur] INT NOT NULL,
     [idThematique] INT NOT NULL,
@@ -27,7 +33,7 @@ CREATE TABLE [dbo].[Thematique] (
 CREATE TABLE [dbo].[Publication] (
     [idPublication]        INT          IDENTITY (1, 1) NOT NULL,
     [date]    DATETIME NOT NULL,
-    [corps] VARCHAR  NOT NULL,
+    [corps] TEXT  NOT NULL,
     [idUtilisateur] int NOT NULL,
     [idThematique] int NOT NULL,
     PRIMARY KEY CLUSTERED ([idPublication] ASC)

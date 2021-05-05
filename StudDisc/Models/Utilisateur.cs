@@ -1,44 +1,61 @@
-﻿using System;
+﻿using StudDisc.DAO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace StudDisc.Models
 {
-    class Utilisateur
+    class Utilisateur : Personne
     {
-        private int id;
-        private string nom;
-        private string prenom;
-        private string email;
-        private string mdp;
-        private TypeUtilisateur role;
-
-        public Utilisateur(string nom, string prenom, string email, string mdp, TypeUtilisateur role)
+        public Utilisateur(string nom, string prenom, string email, string mdp)
         {
             Nom = nom;
             Prenom = prenom;
             Email = email;
             Mdp = mdp;
-            Role = role;
+            Role = TypeUtilisateur.Utilisateur;
         }
 
-        public Utilisateur()
+        public Utilisateur() 
         {
+            Role = TypeUtilisateur.Utilisateur;
         }
 
-        public int Id { get => id;/* set => id = value;*/ }
-        public string Nom { get => nom; set => nom = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
-        public string Email { get => email; set => email = value; }
-        public string Mdp { get => mdp; set => mdp = value; }
-        internal TypeUtilisateur Role { get => role; set => role = value; }
-    }
 
-    enum TypeUtilisateur
-    {
-        Administrateur,
-        Utilisateur,
-        Visiteur
-    }
+       public override bool Add()
+        {
+            UtilisateurDAO dao = new UtilisateurDAO();
+            return dao.Add(this) > 0;
+        }
 
+        public override bool Update()
+        {
+            UtilisateurDAO dao = new UtilisateurDAO();
+            return dao.Update(this) > 0;
+        }
+
+        public override bool Delete()
+        {
+            UtilisateurDAO dao = new UtilisateurDAO();
+            return dao.Delete(this) > 0;
+        }
+
+
+
+        public List<Utilisateur> All()
+        {
+            UtilisateurDAO dao = new UtilisateurDAO();
+            return dao.All();
+        }
+
+
+        public Utilisateur GetOne(int id)
+        {
+            UtilisateurDAO dao = new UtilisateurDAO();
+            return dao.GetOne(id);
+        }
+
+
+
+    }
 }

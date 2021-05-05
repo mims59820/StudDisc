@@ -1,0 +1,88 @@
+﻿using StudDisc.DAO;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace StudDisc.Models
+{
+    class Personne
+    {
+        private int id;
+        private string nom;
+        private string prenom;
+        private string email;
+        private string mdp;
+        private TypeUtilisateur role;
+
+        public Personne(string nom, string prenom, string email, string mdp)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Email = email;
+            Mdp = mdp;
+            Role = TypeUtilisateur.Visiteur;
+        }
+
+        public Personne()
+        {
+            Role = TypeUtilisateur.Visiteur;
+        }
+
+        public int Id { get => id; set => id = value; }
+        public string Nom { get => nom; set => nom = value; }
+        public string Prenom { get => prenom; set => prenom = value; }
+        public string Email { get => email; set => email = value; }
+        public string Mdp { get => mdp; set => mdp = value; }
+        internal TypeUtilisateur Role { get => role; set => role = value; }
+
+
+
+
+        public virtual bool Add()
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.Add(this)>0;
+        }
+
+
+        public virtual bool Update()
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.Update(this) > 0;
+        }
+
+        public virtual bool Delete()
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.Delete(this) > 0;
+        }
+
+
+        public  List<Personne> All()
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.All();
+        }
+
+
+        public  Personne GetOne(int id)
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.GetOne(id);
+        }
+
+
+
+
+
+
+    }
+
+    enum TypeUtilisateur
+    {
+        Administrateur,
+        Utilisateur,
+        Visiteur
+    }
+
+}
