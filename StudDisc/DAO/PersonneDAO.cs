@@ -64,6 +64,25 @@ namespace StudDisc.DAO
         public List<Personne> All()
         {
             List<Personne> personnes = new List<Personne>();
+            string request = "Select idPersonne, nom, prenom, email, mdp, role from personne ";
+            SqlConnection connection = Data.ConnectionDB.Connection;
+            SqlCommand command = new SqlCommand(request, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Personne personne = new Personne(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4));
+                personne.Id = reader.GetInt32(0);
+                personnes.Add(personne);
+            }
+            return personnes;
+        }
+
+
+        public List<Personne> AllVisiteur()
+        {
+            List<Personne> personnes = new List<Personne>();
             string request = "Select idPersonne, nom, prenom, email, mdp, role from personne where personne.role='Visiteur'";
             SqlConnection connection = Data.ConnectionDB.Connection;
             SqlCommand command = new SqlCommand(request, connection);

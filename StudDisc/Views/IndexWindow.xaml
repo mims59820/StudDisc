@@ -1,0 +1,53 @@
+﻿<Window x:Class="StudDisc.Views.IndexWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudDisc.Views"
+        mc:Ignorable="d"
+        Title="IndexWindow" Height="365" Width="800" WindowStartupLocation="CenterOwner"  ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush  ImageSource="https://inchain.works/images/blog/echangedecentralise.png" Stretch="Fill" Opacity = "0.1"/>
+        </Grid.Background>
+        <StackPanel Margin="0,0,0,-36">
+            <GroupBox Header="" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Email :"/>
+                    <TextBox Text="{Binding Email}" Width="160"/>
+                    <Label Content="Mot de passe :"/>
+                    <TextBox Text="" Width="160"/>
+                    <Button Command="{Binding Connexion}" Content="Connexion" Margin="10 0 10 0" />
+                </StackPanel>
+            </GroupBox>
+            <StackPanel HorizontalAlignment="Right" Margin="20 50 70 20">
+                <GroupBox Header="Inscription" >
+                    <StackPanel HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal" Margin="0 10 10 10" >
+                            <Label Content="Nom :"/>
+                            <TextBox Text="{Binding Nom}" Width="160" Margin="48 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 10">
+                            <Label Content="Prenom :"/>
+                            <TextBox Text="{Binding Prenom}" Width="160" Margin="33 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 10">
+                            <Label Content="Email :"/>
+                            <TextBox Text="{Binding Email}" Width="160" Margin="46 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 10 10">
+                            <Label Content="Mot de passe :"/>
+                            <PasswordBox PasswordChar="{Binding Mdp}" Width="160" Margin="3 0 0 0"/>
+                        </StackPanel>
+                        <Button Command="{Binding AjoutCommand}" Content="Inscription"/>
+                    </StackPanel>
+                </GroupBox>
+
+            </StackPanel>
+            
+        </StackPanel>
+        <Border BorderThickness="1" BorderBrush="Black"/>
+
+
+    </Grid>
+</Window>

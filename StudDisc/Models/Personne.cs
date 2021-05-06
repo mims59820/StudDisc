@@ -58,10 +58,16 @@ namespace StudDisc.Models
         }
 
 
-        public  List<Personne> All()
+        public List<Personne> All()
         {
             PersonneDAO dao = new PersonneDAO();
             return dao.All();
+        }
+
+        public List<Personne> AllVisiteur()
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.AllVisiteur();
         }
 
 

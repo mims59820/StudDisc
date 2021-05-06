@@ -24,3 +24,9 @@ C:\Users\Mimoun\source\repos\StudDisc\StudDisc\obj\Debug\netcoreapp3.1\StudDisc.
 C:\Users\Mimoun\source\repos\StudDisc\StudDisc\obj\Debug\netcoreapp3.1\StudDisc.dll
 C:\Users\Mimoun\source\repos\StudDisc\StudDisc\obj\Debug\netcoreapp3.1\StudDisc.pdb
 C:\Users\Mimoun\source\repos\StudDisc\StudDisc\obj\Debug\netcoreapp3.1\StudDisc.genruntimeconfig.cache
+C:\Users\Mimoun\source\repos\StudDisc\StudDisc\obj\Debug\netcoreapp3.1\Views\IndexWindow.g.cs
+C:\Users\Mimoun\source\repos\StudDisc\StudDisc\obj\Debug\netcoreapp3.1\Views\IndexWindow.baml
+C:\Users\Mimoun\source\repos\StudDisc\StudDisc\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Mimoun\source\repos\StudDisc\StudDisc\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Mimoun\source\repos\StudDisc\StudDisc\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.dll
+C:\Users\Mimoun\source\repos\StudDisc\StudDisc\bin\Debug\netcoreapp3.1\System.Windows.Interactivity.dll
