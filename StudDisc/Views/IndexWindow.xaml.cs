@@ -21,10 +21,38 @@ namespace StudDisc.Views
     {
         public IndexWindow()
         {
+            
             InitializeComponent();
             DataContext = new PersonneViewModel();
         }
+        Personne p;
 
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxEmail.Text !="" && textBoxMdp.Text !="")
+            {
+
+                Personne p = new Personne().Connexion(textBoxEmail.Text, textBoxMdp.Text);
+                if (p != null)
+                {
+                    ActuWindow fenetre = new ActuWindow();
+                    this.Close();
+                    fenetre.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Mot de passe et/ou email invalide", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir le mot de passe et l'émail", "Erreur saisie", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
 }
+
+
+

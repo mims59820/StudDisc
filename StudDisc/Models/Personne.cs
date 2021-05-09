@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace StudDisc.Models
 {
-    class Personne
+    class Personne : Window
     {
         private int id;
         private string nom;
@@ -78,7 +79,11 @@ namespace StudDisc.Models
         }
 
 
-
+        public Personne Connexion(string email, string mdp)
+        {
+            PersonneDAO dao = new PersonneDAO();
+            return dao.Connexion(email, mdp);
+        }
 
 
 

@@ -11,7 +11,7 @@ namespace StudDisc.ViewModels
 {
     class PersonneViewModel : ViewModelBase
     {
-        private Personne personne;
+       /* private Personne personne;
 
         public int Id{ get => personne.Id; set { personne.Id = value; RaisePropertyChanged(); }}
 
@@ -53,7 +53,7 @@ namespace StudDisc.ViewModels
 
         private void ActionAjoutCommand()
         {
-            if(Nom!=null && Prenom!= null && Email!=null && Mdp != null)
+            if(Nom!=null && Prenom!= null && Email!=null && Mdp!=null)
             {
                 MessageBox.Show("Tout les champs remplis");
             }
@@ -62,7 +62,7 @@ namespace StudDisc.ViewModels
                 MessageBox.Show("Remplir tout les chamsp");
             }
         
-        }
+        }*/
 
 
 

@@ -120,5 +120,27 @@ namespace StudDisc.DAO
             return personne;
         }
 
+        public Personne Connexion(string email, string mdp)
+        {
+            Personne personne = null;
+            string request = "Select idPersonne, nom, prenom, email, mdp, role from personne where personne.email=@email and personne.mdp=@mdp";
+            SqlConnection connection = Data.ConnectionDB.Connection;
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@email", email));
+            command.Parameters.Add(new SqlParameter("@mdp", mdp));
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                personne = new Personne();
+                personne.Id = reader.GetInt32(0);
+                personne.Nom = reader.GetString(1);
+                personne.Prenom = reader.GetString(2);
+                personne.Mdp = reader.GetString(3);
+            }
+            return personne;
+        }
+
     }
 }

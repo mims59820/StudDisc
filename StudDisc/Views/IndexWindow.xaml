@@ -14,10 +14,10 @@
             <GroupBox Header="" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="Email :"/>
-                    <TextBox Text="{Binding Email}" Width="160"/>
+                    <TextBox  x:Name="textBoxEmail" Width="160"/>
                     <Label Content="Mot de passe :"/>
-                    <TextBox Text="" Width="160"/>
-                    <Button Command="{Binding Connexion}" Content="Connexion" Margin="10 0 10 0" />
+                    <TextBox x:Name="textBoxMdp" Text="" Width="160"/>
+                    <Button Command="{Binding Connexion}" Content="Connexion" Margin="10 0 10 0" Click="Button_Click" />
                 </StackPanel>
             </GroupBox>
             <StackPanel HorizontalAlignment="Right" Margin="20 50 70 20">
@@ -37,17 +37,16 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 0 10 10">
                             <Label Content="Mot de passe :"/>
-                            <PasswordBox PasswordChar="{Binding Mdp}" Width="160" Margin="3 0 0 0"/>
+                            <PasswordBox PasswordChar="{Binding Mdp}"  Width="160" Margin="3 0 0 0"/>
                         </StackPanel>
-                        <Button Command="{Binding AjoutCommand}" Content="Inscription"/>
+                        <Button Command="{Binding AjoutCommand}" Content="Inscription" />
                     </StackPanel>
                 </GroupBox>
 
             </StackPanel>
             
         </StackPanel>
-        <Border BorderThickness="1" BorderBrush="Black"/>
-
+       
 
     </Grid>
 </Window>

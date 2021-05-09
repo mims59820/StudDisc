@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Mimoun\source\repos\StudDisc\StudDisc\App.xaml
-2433784174
+3520432069
 
-20-1773371114
+21-1501422934
 197896138356
-MainWindow.xaml;Views\IndexWindow.xaml;
+MainWindow.xaml;Views\ActuWindow.xaml;Views\IndexWindow.xaml;
 
-True
+False
 
