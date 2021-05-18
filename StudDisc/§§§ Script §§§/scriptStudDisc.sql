@@ -1,6 +1,6 @@
 ﻿
 drop table utilisateur;
-drop table UtilisateurThematique;
+drop table PersonneThematique;
 drop table Thematique;
 drop table publication
 
