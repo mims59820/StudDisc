@@ -12,7 +12,7 @@ namespace StudDisc.DAO
 
         public int Add(Thematique theme)
         {
-            string request = "insert into Thematique (titre, date, idUtilisateur) output inserted.idThematique (@titre, @date, @idUtilisateur)";
+            string request = "insert into Thematique (titre, date, idUtilisateur) output inserted.idThematique values (@titre, @date, @idUtilisateur)";
             SqlConnection connection = Data.ConnectionDB.Connection;
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@titre", theme.Titre));
@@ -67,6 +67,8 @@ namespace StudDisc.DAO
             {
                 Thematique theme = new Thematique(reader.GetString(1), reader.GetDateTime(2),reader.GetInt32(3));
                 theme.Id = reader.GetInt32(0);
+                List<Publication> pubs = Publication.AllByTheme(theme.Id);
+                theme.Publications = pubs;
                 thematiques.Add(theme);
             }
             command.Dispose();
@@ -96,10 +98,67 @@ namespace StudDisc.DAO
 
 
 
+        public List<Thematique> MyAll(int idUtilisateur)
+        {
+            List<Thematique> thematiques = new List<Thematique>();
+            string request = "select idThematique, titre, date, idUtilisateur from Thematique where idUtilisateur=@idUtilisateur ";
+            SqlConnection connection = Data.ConnectionDB.Connection;
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@idUtilisateur", idUtilisateur));
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Thematique theme = new Thematique(reader.GetString(1), reader.GetDateTime(2), reader.GetInt32(3));
+                theme.Id = reader.GetInt32(0);
+                thematiques.Add(theme);
+            }
+            command.Dispose();
+            connection.Close();
+            return thematiques;
+        }
 
 
 
 
+        public List<Thematique> MyAllIntervention(int idUtilisateur)
+        {
+            List<Thematique> thematiques = new List<Thematique>();
+            string request = "select Thematique.idThematique, Thematique.titre, Thematique.date, Thematique.idUtilisateur from Thematique inner join publication on Thematique.idThematique=Publication.idThematique where Publication.idUtilisateur=@idUtilisateur ";
+            SqlConnection connection = Data.ConnectionDB.Connection;
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@idUtilisateur", idUtilisateur));
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Thematique theme = new Thematique(reader.GetString(1), reader.GetDateTime(2), reader.GetInt32(3));
+                theme.Id = reader.GetInt32(0);
+                thematiques.Add(theme);
+            }
+            command.Dispose();
+            connection.Close();
+            return thematiques;
+        }
+
+
+        public int GetOneByTitre(string titre)
+        {
+            int numberLine=0;
+            string request = "select idThematique, titre, date, idUtilisateur from Thematique where titre like @titre";
+            SqlConnection connection = Data.ConnectionDB.Connection;
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@titre", titre));
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read()) 
+            {
+                numberLine++;
+            }
+            command.Dispose();
+            connection.Close();
+            return numberLine;
+        }
 
     }
 }

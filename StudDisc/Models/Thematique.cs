@@ -30,7 +30,7 @@ namespace StudDisc.Models
             Publications = publications;
         }
 
-        public Thematique(string titre, DateTime date, int idUtilisateurs)
+        public Thematique(string titre, DateTime date, int idUtilisateur)
         {
             Titre = titre;
             Date = date;
@@ -38,10 +38,10 @@ namespace StudDisc.Models
         }
 
 
-        public bool Add()
+        public int Add()
         {
             ThematiqueDAO dao = new ThematiqueDAO();
-            return dao.Add(this) > 0;
+            return dao.Add(this) ;
         }
 
         public bool Update()
@@ -57,7 +57,7 @@ namespace StudDisc.Models
         }
 
 
-        public List<Thematique> All()
+        public static List<Thematique> All()
         {
             ThematiqueDAO dao = new ThematiqueDAO();
             return dao.All();
@@ -68,5 +68,31 @@ namespace StudDisc.Models
             ThematiqueDAO dao = new ThematiqueDAO();
             return dao.GetOne(id);
         }
+
+
+        public static List<Thematique> MyAll(int id)
+        {
+            ThematiqueDAO dao = new ThematiqueDAO();
+            return dao.MyAll(id);
+        }
+
+
+
+
+
+        public static List<Thematique> MyAllIntervention(int id)
+        {
+            ThematiqueDAO dao = new ThematiqueDAO();
+            return dao.MyAllIntervention(id);
+        }
+
+
+        
+         public static int GetOneByTitre(string titre)
+        {
+            ThematiqueDAO dao = new ThematiqueDAO();
+            return dao.GetOneByTitre(titre);
+        }
+
     }
 }

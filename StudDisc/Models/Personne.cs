@@ -24,10 +24,36 @@ namespace StudDisc.Models
             Role = TypeUtilisateur.Visiteur;
         }
 
+        public Personne(int id, string nom, string prenom, string email, string mdp, string role)
+        {
+            Id = id;
+            Nom = nom;
+            Prenom = prenom;
+            Email = email;
+            Mdp = mdp;
+            switch (role)
+            {
+                case "Visiteur":
+                    Role = TypeUtilisateur.Visiteur;
+                    break;
+                case "Administrateur":
+                    Role = TypeUtilisateur.Administrateur;
+                    break;
+                case "Utilisateur":
+                    Role = TypeUtilisateur.Utilisateur;
+                    break;
+                 default:
+                    Role = TypeUtilisateur.Visiteur;
+                    break;
+            }
+        }
+
         public Personne()
         {
             Role = TypeUtilisateur.Visiteur;
         }
+
+       
 
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
@@ -72,7 +98,7 @@ namespace StudDisc.Models
         }
 
 
-        public  Personne GetOne(int id)
+        public static Personne GetOne(int id)
         {
             PersonneDAO dao = new PersonneDAO();
             return dao.GetOne(id);

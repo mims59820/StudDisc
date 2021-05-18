@@ -64,8 +64,12 @@ namespace StudDisc.Models
             return dao.GetOne(id);
         }
 
-
-
+        
+        public static List<Publication> AllByTheme(int id)
+        {
+            PublicationDAO dao = new PublicationDAO();
+            return dao.AllByTheme(id);
+        }
 
 
     }

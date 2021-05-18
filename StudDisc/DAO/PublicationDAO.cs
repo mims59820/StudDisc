@@ -98,5 +98,28 @@ namespace StudDisc.DAO
             return pub;
         }
 
+
+        public List<Publication> AllByTheme(int idtheme)
+        {
+            List<Publication> publications = new List<Publication>();
+            SqlConnection connection = ConnectionDB.Connection;
+            string request = "select idPublication, date, corps , idUtilisateur, idThematique from Publication where idThematique=@id";
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@id", idtheme));
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Publication pub = new Publication(reader.GetInt32(4), reader.GetInt32(3), reader.GetString(2), reader.GetDateTime(1));
+                pub.Id = reader.GetInt32(0);
+                publications.Add(pub);
+            }
+            command.Dispose();
+            connection.Close();
+            return publications;
+        }
+
+
+
     }
 }

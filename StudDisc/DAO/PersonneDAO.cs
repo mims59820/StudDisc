@@ -102,21 +102,19 @@ namespace StudDisc.DAO
         public Personne GetOne(int id)
         {
             Personne personne = null;
-            string request = "Select idPersonne, nom, prenom, email, mdp, role from personne where personne.role='Visiteur' and personne.idPersonne=@id";
+            string request = "Select idPersonne, nom, prenom, email, mdp, role from personne where idPersonne=@id";
             SqlConnection connection = Data.ConnectionDB.Connection;
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", id));
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
+            if (reader.Read())
             {
-                personne = new Personne();
-                personne.Id = reader.GetInt32(0);
-                personne.Nom = reader.GetString(1);
-                personne.Prenom = reader.GetString(2);
-                personne.Mdp = reader.GetString(3);
+                personne = new Personne(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5));
+                
             }
+            command.Dispose();
+            connection.Close();
             return personne;
         }
 

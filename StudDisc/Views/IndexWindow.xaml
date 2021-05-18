@@ -4,19 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudDisc.Views"
+        xmlns:ff= "clr-namespace:StudDisc.Models" xmlns:viewmodels="clr-namespace:StudDisc.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PersonneViewModel}"
         mc:Ignorable="d"
-        Title="IndexWindow" Height="365" Width="800" WindowStartupLocation="CenterOwner"  ResizeMode="NoResize">
+        Title="IndexWindow" Height="365" Width="800" WindowStartupLocation="CenterOwner"  ResizeMode="NoResize"
+        >
     <Grid>
         <Grid.Background>
-            <ImageBrush  ImageSource="https://inchain.works/images/blog/echangedecentralise.png" Stretch="Fill" Opacity = "0.1"/>
+            <ImageBrush  ImageSource="https://inchain.works/images/blog/echangedecentralise.png" Stretch="Fill" Opacity = "0.2"/>
         </Grid.Background>
         <StackPanel Margin="0,0,0,-36">
             <GroupBox Header="" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="Email :"/>
-                    <TextBox  x:Name="textBoxEmail" Width="160"/>
+                    <TextBox  x:Name="textBoxEmail" Text="email"  Width="160"/>
                     <Label Content="Mot de passe :"/>
-                    <TextBox x:Name="textBoxMdp" Text="" Width="160"/>
+                    <TextBox x:Name="textBoxMdp" Text="123" Width="160"/>
+                    <!---<PasswordBox x:Name="PasswordBox" ff:PasswordBoxAssistant.BindPassword="true"  ff:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+
+
                     <Button Command="{Binding Connexion}" Content="Connexion" Margin="10 0 10 0" Click="Button_Click" />
                 </StackPanel>
             </GroupBox>
@@ -37,7 +42,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 0 10 10">
                             <Label Content="Mot de passe :"/>
-                            <PasswordBox PasswordChar="{Binding Mdp}"  Width="160" Margin="3 0 0 0"/>
+                            <PasswordBox Width="160" Margin="3 0 0 0"/>
                         </StackPanel>
                         <Button Command="{Binding AjoutCommand}" Content="Inscription" />
                     </StackPanel>

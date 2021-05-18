@@ -35,14 +35,15 @@ namespace StudDisc.Views
                 Personne p = new Personne().Connexion(textBoxEmail.Text, textBoxMdp.Text);
                 if (p != null)
                 {
-                    ActuWindow fenetre = new ActuWindow();
+                    ActuWindow fenetre = new ActuWindow(p.Id);
+                  
                     this.Close();
                     fenetre.Show();
                 }
                 else
                 {
                     MessageBox.Show("Mot de passe et/ou email invalide", "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                    
                 }
 
             }
@@ -51,6 +52,8 @@ namespace StudDisc.Views
                 MessageBox.Show("Veuillez remplir le mot de passe et l'émail", "Erreur saisie", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+      
     }
 }
 

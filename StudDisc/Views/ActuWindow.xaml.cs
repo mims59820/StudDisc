@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudDisc.Models;
+using StudDisc.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,10 +19,13 @@ namespace StudDisc.Views
     /// </summary>
     public partial class ActuWindow : Window
     {
-        public ActuWindow()
+       
+
+        public ActuWindow(int nbrId)
         {
             InitializeComponent();
-            
+            DataContext = new ThematiqueViewModel(nbrId);
+           
         }
     }
 }
