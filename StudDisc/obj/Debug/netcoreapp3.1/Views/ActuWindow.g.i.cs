@@ -53,7 +53,7 @@ namespace StudDisc.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/StudDisc;V1.0.0.0;component/views/actuwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/StudDisc;component/views/actuwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ActuWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -44,10 +44,10 @@ namespace StudDisc.ViewModels
         public ObservableCollection<Thematique> MesThematiques { get; set; }
         public ObservableCollection<Thematique> MesIntervention { get; set; }
         public ObservableCollection<Thematique> ListechoixThematique { get => listechoixThematique; set => listechoixThematique = value;}
+        public List<Publication> ListeChoixPublications { get => listeChoixPublications; set => listeChoixPublications = value; }
 
 
 
-       
         public string Titre { get; set; }
 
         public Thematique Thematique
@@ -123,9 +123,11 @@ namespace StudDisc.ViewModels
         {
             get => listboxselected; set
             {
+                
                 listboxselected = value;
                 if (listboxselected == ListeChoix[0])
                 {
+                   
                     ListechoixThematique = AllThematiques;
                     
                 }
@@ -143,21 +145,21 @@ namespace StudDisc.ViewModels
             }
         }
 
-       /* public Thematique ThematiqueSelectionne
+        public Thematique ThematiqueSelectionne
         {
             get => thematiqueSelectionne;
             set
             {
                 thematiqueSelectionne = value;
-                ListeChoixPublications = Publication.AllByTheme(thematiqueSelectionne.Id);
+                ListeChoixPublications = Publication.AllByTheme(ThematiqueSelectionne.Id);
                 RaisePropertyChanged("ListeChoixPublications");
 
             }
-        }*/
+        }
 
 
         public ICommand AjoutTitre { get; set; }
-        public List<Publication> ListeChoixPublications { get => listeChoixPublications; set => listeChoixPublications = value; }
+       
 
         private void ActionValidCommand()
         {
