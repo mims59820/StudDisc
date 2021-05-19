@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudDisc.Views"
         mc:Ignorable="d"
         Title="ActuWindow" Height="600" Width="1200">
-    <Grid>
+    <Grid Background="Azure">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="400"/>
@@ -18,8 +18,36 @@
                 <GroupBox Header="Ma selection">
                     <StackPanel>
                         <ListBox SelectedItem="{Binding Listboxselected}"  ItemsSource="{Binding ListeChoix}" >
-                           
+
                         </ListBox>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+        </StackPanel>
+
+
+
+
+
+
+
+
+        <StackPanel Grid.Column="1">
+            <StackPanel>
+                <GroupBox Header="Thématiques">
+                    <StackPanel>
+                        <Label Content="{Binding Listboxselected}"/>
+                        <ListView SelectedItem="{Binding ThematiqueSelectionne}" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="380" ItemsSource="{Binding ListechoixThematique}" Width="374">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="170" Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
+                                    <GridViewColumn Width="70" Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                                    <!--<GridViewColumn Width="70" Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>-->
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
@@ -33,49 +61,41 @@
                 </GroupBox>
             </StackPanel>
         </StackPanel>
-        
-        
-        
-
-        
-        
-        
-
-        <StackPanel Grid.Column="1">
-            <GroupBox Header="Thématiques">
-                <StackPanel>
-                    <ListView SelectedItem="{Binding ThematiqueSelectionne}" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="380" ItemsSource="{Binding ListechoixThematique}" Width="374">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                                <GridViewColumn Width="170" Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
-                                <GridViewColumn Width="70" Header="Date" DisplayMemberBinding="{Binding Date}"/>
-                                <!--<GridViewColumn Width="70" Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>-->
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </StackPanel>
-            </GroupBox>
-        </StackPanel>
 
 
         <StackPanel Grid.Column="2">
-            
+
             <GroupBox Header="Publications">
                 <StackPanel>
-                    <Label Content=""/>
-                    <ListView ItemsSource="{Binding ListeChoixPublications}"  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="380" Width="374">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Width="50" Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Width="170" Header="Corps" DisplayMemberBinding="{Binding Paragraphe}"/>
-                                <!--<GridViewColumn Width="70" Header="PrenomUtilisateur" />-->
-                                <!--<GridViewColumn Width="70" Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>-->
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <StackPanel>
+                        <Label Content="{Binding ThematiqueSelectionne.Titre}"/>
+                        <ListView ItemsSource="{Binding ListeChoixPublications}"  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="378" Width="552">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="50" Header="Date" DisplayMemberBinding="{Binding Date}" />
+                                    <GridViewColumn Width="170" Header="Corps" DisplayMemberBinding="{Binding Paragraphe}"/>
+                                    <!--<GridViewColumn Width="70" Header="PrenomUtilisateur" />-->
+                                    <!--<GridViewColumn Width="70" Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>-->
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel>
+                        <GroupBox Header="Ajout de publication">
+                            <StackPanel>
+                                <StackPanel>
+                                    <Label Content="Contenu :" ></Label >
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox Text="{Binding Contenu}"   AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="fr"        Margin=" 5 5 5 5" Width="500" Height="auto"/>
+                                    <Button Command="{Binding AjoutContenu}" Content="Publier" Margin=" 5 5 5 5" ></Button>
+                                </StackPanel>
+                                <Label Content="{Binding Personne.Prenom}"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
                 </StackPanel>
-                
+
             </GroupBox>
         </StackPanel>
 

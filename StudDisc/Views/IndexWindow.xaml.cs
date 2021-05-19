@@ -31,7 +31,6 @@ namespace StudDisc.Views
         {
             if (textBoxEmail.Text !="" && textBoxMdp.Text !="")
             {
-
                 Personne p = new Personne().Connexion(textBoxEmail.Text, textBoxMdp.Text);
                 if (p != null)
                 {
