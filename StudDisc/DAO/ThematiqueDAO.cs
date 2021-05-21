@@ -124,7 +124,7 @@ namespace StudDisc.DAO
         public List<Thematique> MyAllIntervention(int idUtilisateur)
         {
             List<Thematique> thematiques = new List<Thematique>();
-            string request = "select Thematique.idThematique, Thematique.titre, Thematique.date, Thematique.idUtilisateur from Thematique inner join publication on Thematique.idThematique=Publication.idThematique where Publication.idUtilisateur=@idUtilisateur ";
+            string request = "select distinct Thematique.idThematique, Thematique.titre, Thematique.date, Thematique.idUtilisateur from Thematique inner join publication on Thematique.idThematique=Publication.idThematique where Publication.idUtilisateur=@idUtilisateur ";
             SqlConnection connection = Data.ConnectionDB.Connection;
             SqlCommand command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@idUtilisateur", idUtilisateur));

@@ -14,16 +14,42 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel>
-            <StackPanel Margin="0 0 0 30" >
+            <StackPanel Margin="0 0 0 5" >
                 <GroupBox Header="Ma selection">
                     <StackPanel>
-                        <ListBox SelectedItem="{Binding Listboxselected}"  ItemsSource="{Binding ListeChoix}" >
-
+                        <ListBox SelectedItem="{Binding Listboxselected}"  ItemsSource="{Binding ListeChoix}" Height="74" >
                         </ListBox>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
-
+            <StackPanel Grid.Column="0">
+                <GroupBox Header="Utilisateur">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBox Margin="5 5 0 5" Width="119"/>
+                            <Button Content="Rechercher" Margin="5 5 0 5"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <ListView  ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding ListeUtilisateurs}" SelectedItem="{Binding Utilisateur}" Height="274" >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                                        <GridViewColumn Header="Prénom" DisplayMemberBinding="{Binding Prenom}"/>
+                                        <GridViewColumn Header="Émail" DisplayMemberBinding="{Binding Email}"/>
+                                        <GridViewColumn Header="Mot de passe" DisplayMemberBinding="{Binding Mdp}"/>
+                                        <GridViewColumn Header="Rôle" DisplayMemberBinding="{Binding Role }"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Ses Thématiques" Command="{Binding SesThematiques}" Margin="5 5 5 5" />
+                            <Button Content="Ses Publications par thématique" Command="{Binding SesPublications}" Margin="0 5 5 5" Width="80"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
         </StackPanel>
 
 
@@ -53,9 +79,9 @@
             </StackPanel>
             <StackPanel>
                 <GroupBox Header="Ajout de thematique">
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <Label Content="Titre :" ></Label >
-                        <TextBox Text="{Binding Titre}" Margin=" 5 5 5 5"/>
+                        <TextBox Text="{Binding Titre}" Margin=" 5 5 5 5" Width="288"/>
                         <Button Content="Valider" Margin=" 5 5 5 5" Command="{Binding AjoutTitre}"></Button>
                     </StackPanel>
                 </GroupBox>
@@ -73,21 +99,20 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Width="50" Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                    <GridViewColumn Width="170" Header="Corps" DisplayMemberBinding="{Binding Paragraphe}"/>
-                                    <!--<GridViewColumn Width="70" Header="PrenomUtilisateur" />-->
+                                    <GridViewColumn Width="170" Header="Corps" DisplayMemberBinding="{Binding Paragraphe}" />
                                     <!--<GridViewColumn Width="70" Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>-->
                                 </GridView>
                             </ListView.View>
                         </ListView>
                     </StackPanel>
                     <StackPanel>
-                        <GroupBox Header="Ajout de publication">
-                            <StackPanel>
+                        <GroupBox Header="Ajout de publication" Width="569">
+                            <StackPanel Orientation="Horizontal">
                                 <StackPanel>
                                     <Label Content="Contenu :" ></Label >
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBox Text="{Binding Contenu}"   AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="fr"        Margin=" 5 5 5 5" Width="500" Height="auto"/>
+                                    <TextBox Text="{Binding Contenu}"   AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="fr"        Margin=" 5 5 5 5" Width="432" Height="auto"/>
                                     <Button Command="{Binding AjoutContenu}" Content="Publier" Margin=" 5 5 5 5" ></Button>
                                 </StackPanel>
                                 <Label Content="{Binding Personne.Prenom}"/>

@@ -42,7 +42,7 @@ namespace StudDisc.Models
                 case "Utilisateur":
                     Role = TypeUtilisateur.Utilisateur;
                     break;
-                 default:
+                default:
                     Role = TypeUtilisateur.Visiteur;
                     break;
             }
@@ -60,7 +60,7 @@ namespace StudDisc.Models
         public string Prenom { get => prenom; set => prenom = value; }
         public string Email { get => email; set => email = value; }
         public string Mdp { get => mdp; set => mdp = value; }
-        internal TypeUtilisateur Role { get => role; set => role = value; }
+        public TypeUtilisateur Role { get => role; set => role = value; }
 
 
 
@@ -85,7 +85,7 @@ namespace StudDisc.Models
         }
 
 
-        public List<Personne> All()
+        public static List<Personne> All()
         {
             PersonneDAO dao = new PersonneDAO();
             return dao.All();

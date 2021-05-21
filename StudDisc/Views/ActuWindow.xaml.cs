@@ -27,5 +27,10 @@ namespace StudDisc.Views
             DataContext = new ThematiqueViewModel(nbrId);
            
         }
+
+        private void GridViewColumn_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

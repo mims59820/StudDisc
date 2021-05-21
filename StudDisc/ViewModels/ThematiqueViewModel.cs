@@ -12,7 +12,11 @@ namespace StudDisc.ViewModels
 {
     class ThematiqueViewModel : ViewModelBase
     {
+        private ObservableCollection<Personne> listeUtilisateurs;
+        //Propriété concernant la personne qui se connecte
         private Personne personne;
+        //Propriété concernant la personne selectionné
+        private Personne utilisateur;
         private Thematique thematique;
         private string listboxselected;
         private List<string> listeChoix;
@@ -27,6 +31,7 @@ namespace StudDisc.ViewModels
             AllThematiques = new ObservableCollection<Thematique>(Thematique.All());
             MesThematiques = new ObservableCollection<Thematique>(Thematique.MyAll(IdUtilisateur));
             MesIntervention = new ObservableCollection<Thematique>(Thematique.MyAllIntervention(IdUtilisateur));
+            ListeUtilisateurs = new ObservableCollection<Personne>(Personne.All());
             Personne = Personne.GetOne(IdUtilisateur);
             ListechoixThematique = AllThematiques;
             AjoutTitre = new RelayCommand(ActionValidCommand);
@@ -41,6 +46,11 @@ namespace StudDisc.ViewModels
 
         public ICommand AjoutTitre { get; set; }
         public ICommand AjoutContenu { get; set; }
+        public ICommand SesThematiques { get; set; }
+        public ICommand SesPublications { get; set; }
+
+
+
         public string Contenu
         {
             get => contenu; set
@@ -51,14 +61,15 @@ namespace StudDisc.ViewModels
         }
 
 
-
+        #region Propriété
         public ObservableCollection<Thematique> AllThematiques { get; set; }
         public ObservableCollection<Thematique> MesThematiques { get; set; }
         public ObservableCollection<Thematique> MesIntervention { get; set; }
         public ObservableCollection<Thematique> ListechoixThematique { get => listechoixThematique; set => listechoixThematique = value; }
         public List<Publication> ListeChoixPublications { get => listeChoixPublications; set => listeChoixPublications = value; }
-
-
+        public Personne Utilisateur { get => utilisateur; set => utilisateur = value; }
+        public ObservableCollection<Personne> ListeUtilisateurs { get => listeUtilisateurs; 
+            set => listeUtilisateurs = value; }
 
         public string Titre { get; set; }
 
@@ -75,11 +86,6 @@ namespace StudDisc.ViewModels
                 RaisePropertyChanged("Thematique");
             }
         }
-
-     
-
-
-
 
         public int IdThematique
         {
@@ -191,21 +197,25 @@ namespace StudDisc.ViewModels
             }
         }
 
+        
+
+
+
+        #endregion
+
+
         private void ActionValidCommand()
         {
-
             if (Titre != "")
             {
                 if (Thematique.GetOneByTitre(Titre) > 0)
                 {
                     MessageBox.Show("Une thématique existe déja avec ce Titre", "Erreur titre", MessageBoxButton.OK, MessageBoxImage.Information);
-
                 }
                 else
                 {
                     Thematique t = new Thematique(Titre, DateTime.Now, Personne.Id);
                     int idthematique = t.Add();
-
                     if (idthematique > 0)
                     {
                         t.Id = idthematique;
@@ -216,7 +226,6 @@ namespace StudDisc.ViewModels
                             Titre = "";
                             AllThematiques.Add(t);
                             MesThematiques.Add(t);
-                            
                         }
                     }
                     else
@@ -230,11 +239,8 @@ namespace StudDisc.ViewModels
             {
                 MessageBox.Show("Veuillez saisir un titre", "Erreur titre", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-
             Titre = "";
             RaisePropertyChanged("Titre");
-
         }
 
 

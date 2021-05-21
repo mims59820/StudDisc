@@ -72,8 +72,7 @@ namespace StudDisc.DAO
 
             while (reader.Read())
             {
-                Personne personne = new Personne(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4));
-                personne.Id = reader.GetInt32(0);
+                Personne personne = new Personne(reader.GetInt32(0),  reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5));
                 personnes.Add(personne);
             }
             return personnes;
@@ -129,7 +128,7 @@ namespace StudDisc.DAO
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
+            if (reader.Read())
             {
                 personne = new Personne();
                 personne.Id = reader.GetInt32(0);
